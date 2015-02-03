@@ -1,0 +1,42 @@
+<div class="col-xs-12">
+  <div class="jumbotron">
+    <div class="container">
+      <h1><span>THE</span> JJAL</h1>
+      <p>웹 개발을 위한 고품질 이미지 솔루션.</p>
+      <p><a class="btn btn-primary btn-lg" href="#dashboard" role="button">후방주의!</a></p>
+    </div>
+  </div>
+
+  <h1>Team</h1>
+
+    <blockquote>
+      <p>순순히 어두운 이미지를 받아들이지 마오. 개발자들이여.</p>
+      <footer>Lord of <cite title="Source Title">A Corner, Inc.</cite></footer>
+    </blockquote>
+    <blockquote class="blockquote-reverse">
+      <p>다른데 가면 좀 더 조심하는게 좋을껄? 우리보다 못된 이미지는 쎄고 쎘으니까.</p>
+      <footer>Technology Guild Master in <cite title="Source Title">A Corner, Inc.</cite></footer>
+    </blockquote>
+    <blockquote>
+      <p>예림이~ 그이미지 봐봐! 혹시 PNG야?</p>
+      <footer>Server Shepherd in <cite title="Source Title">A Corner, Inc.</cite></footer>
+    </blockquote>
+    <blockquote class="blockquote-reverse">
+      <p>30초안에 털 수 없는 이미지는 손대지 말라고...</p>
+      <footer>Frontend Warrior in <cite title="Source Title">A Corner, Inc.</cite></footer>
+    </blockquote>
+
+  <h1>Contents</h1>
+  <div class="well col-xs-12">
+    <% _.each(thumbnails, function(thumbnail) { %>
+      <div class="col-xs-6 col-sm-3">
+        <blockquote>
+          <p><%= thumbnail.title %></p>
+        </blockquote>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <img src="<%= thumbnail.url %>" class="img-responsive" alt="Responsive image" style="height:300px;">
+      </div>
+    <% }) %>
+  </div>
+</div>

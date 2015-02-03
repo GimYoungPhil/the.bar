@@ -6,7 +6,7 @@ define([
   'views/bottle',
   'views/info',
   'views/error'
-], function($, _, Backbone, NavbarView, DashboardView, InfoView, ErrorView) {
+], function($, _, Backbone, NavbarView, BottleView, InfoView, ErrorView) {
   'use strict';
 
   var AppRouter = Backbone.Router.extend({
@@ -27,13 +27,13 @@ define([
     },
 
     showBottles: function() {
-      var dbView = new DashboardView();
-      this.changeCurrentView(dbView);
+      // var boView = new BottleView();
+      // this.changeCurrentView(boView);
     },
 
     showInfo: function() {
-      var iView = new InfoView();
-      this.changeCurrentView(iView);
+      // var iView = new InfoView();
+      // this.changeCurrentView(iView);
     },
 
     showError: function() {
