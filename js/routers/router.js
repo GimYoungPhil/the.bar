@@ -3,10 +3,10 @@ define([
   'underscore',
   'backbone',
   'views/navbar',
-  'views/bottle',
+  'views/bottles',
   'views/info',
   'views/error'
-], function($, _, Backbone, NavbarView, BottleView, InfoView, ErrorView) {
+], function($, _, Backbone, NavbarView, BottlesListView, InfoView, ErrorView) {
   'use strict';
 
   var AppRouter = Backbone.Router.extend({
@@ -27,13 +27,13 @@ define([
     },
 
     showBottles: function() {
-      // var boView = new BottleView();
-      // this.changeCurrentView(boView);
+      var blView = new BottlesListView();
+      this.changeCurrentView(blView);
     },
 
     showInfo: function() {
-      // var iView = new InfoView();
-      // this.changeCurrentView(iView);
+      var iView = new InfoView();
+      this.changeCurrentView(iView);
     },
 
     showError: function() {
