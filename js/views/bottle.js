@@ -8,7 +8,7 @@ define([
 
   var ItemView = Backbone.View.extend({
     tagName: 'div',
-    className: 'col-xs-12 col-sm-3',
+    className: 'col-xs-12 col-sm-4',
     template: _.template(template),
     events: {
     },

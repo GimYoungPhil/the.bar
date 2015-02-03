@@ -41,7 +41,6 @@ position: absolute;
 
 .front,
 .back {
-
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -56,4 +55,15 @@ position: absolute;
 
 .back {
   transform: rotateY(180deg);
+}
+
+.flipper .front .image i {
+position: absolute;
+left: 10px;
+bottom: 10px;
+display: none;
+}
+
+.flipper:hover .front .image i {
+display: block;
 }
