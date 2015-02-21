@@ -4,7 +4,22 @@ define(['bar'], function(BarManager){
 
     Entities.Bottle = Backbone.Model.extend({
       urlRoot: '/api/bottles',
-      idAttribute: '_id'
+      idAttribute: '_id',
+
+      validate: function(attrs, options) {
+        var errors = {};
+        if (!attrs.title) {
+          errors.title = '채워 주셔야 해요.';
+        } else if (attrs.title.length < 2) {
+          errors.title = '2자 이상 길게 채워 주셔야 해요.';
+        }
+        if (!attrs.alcohol) {
+          errors.alcohol = '채워 주셔야 해요.';
+        }
+        if (!_.isEmpty(errors)) {
+          return errors;
+        }
+      }
     });
 
 /*

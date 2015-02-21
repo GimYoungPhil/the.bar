@@ -26,11 +26,11 @@ define(['bar'], function(BarManager) {
             }
 
             view.on('form:submit', function(data) {
-              bottle.save(data, {
-                success: function() {
-                  BarManager.trigger('bottle:show', bottle.get('_id'));
-                }
-              })
+              if (bottle.save(data)) {
+                BarManager.trigger('bottle:show', bottle.get('_id'));
+              } else {
+                view.triggerMethod('form:data:invalid', bottle.validationError);
+              }
             });
 
             view.on('bottle:show', function(model) {
