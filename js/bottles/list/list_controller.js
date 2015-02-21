@@ -13,10 +13,18 @@ define(['bar'], function(BarManager) {
 
           var fetchingBottles = BarManager.request('bottle:entities');
 
+          var bottlesListLayout = new List.Layout();
+          var bottlesListPanel = new List.Panel();
+
           $.when(fetchingBottles).done(function(bottles) {
 
             var bottlesListView = new List.Bottles({
               collection: bottles
+            });
+
+            bottlesListLayout.on('show', function() {
+              bottlesListLayout.panelRegion.show(bottlesListPanel);
+              bottlesListLayout.bottlesRegion.show(bottlesListView);
             });
 
             bottlesListView.on('childview:bottle:show', function(childView, model) {
@@ -49,7 +57,7 @@ define(['bar'], function(BarManager) {
               model.destory();
             });
 
-            BarManager.mainRegion.show(bottlesListView);
+            BarManager.mainRegion.show(bottlesListLayout);
 
           });
 

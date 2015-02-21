@@ -2,6 +2,19 @@ define(['bar', 'bootstrap', 'syphon'], function(BarManager) {
 
   BarManager.module('BottlesApp.List', function(List, BarManager, Backbone, Marionette, $, _) {
 
+    List.Layout = Marionette.LayoutView.extend({
+      template: '#bottle-list-layout',
+
+      regions: {
+        panelRegion: '#panel-region',
+        bottlesRegion: '#bottles-region'
+      }
+    });
+
+    List.Panel = Marionette.ItemView.extend({
+      template: '#bottle-list-panel'
+    });
+
     List.Bottle = Marionette.ItemView.extend({
       tagName: 'tr',
       template: '#bottle-list-item',
