@@ -6,6 +6,11 @@ define(['bar'], function(BarManager){
       urlRoot: '/api/bottles',
       idAttribute: '_id',
 
+      defaults: {
+        title: '',
+        alcohol: ''
+      },
+
       validate: function(attrs, options) {
         var errors = {};
         if (!attrs.title) {
@@ -41,7 +46,7 @@ define(['bar'], function(BarManager){
     Entities.BottleCollection = Backbone.Collection.extend({
       url: '/api/bottles',
       model: Entities.Bottle,
-      comparator: 'title'
+      // comparator: 'stockDate'
     });
 
     var initializeBottles = function() {

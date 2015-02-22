@@ -34,11 +34,21 @@
 </script>
 
 <script type="text/template" id="bottle-list">
-<thead>
-  <tr><th>주류명</th><th>알코올 성분</th><th>설명</th></tr>
-</thead>
-<tbody>
-</tbody>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Bottle List</h3>
+  </div>
+  <div class="panel-body">
+    <div class="alert alert-warning" role="alert">경고: 지나친 음주는 간경화나 간암을 일으키며, 특히 청소년의 정신과 몸을 해칠 수 있습니다.</div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr><th>주류명</th><th>알콜분</th><th>설명</th></tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
 </script>
 
 <script type="text/template" id="bottle-list-layout">
@@ -47,7 +57,12 @@
 </script>
 
 <script type="text/template" id="bottle-list-panel">
-<button class="btn btn-primary js-new">New bottle</button>
+<h1 class="page-header">
+  <small>The</small>BAR
+  <div class="pull-right">
+    <button class="btn btn-primary js-new">New bottle</button>
+  </div>
+</h1>
 </script>
 
 <script type="text/template" id="bottle-modal">

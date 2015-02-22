@@ -3,6 +3,8 @@ define(['bar', 'bootstrap', 'syphon'], function(BarManager) {
   BarManager.module('BottlesApp.List', function(List, BarManager, Backbone, Marionette, $, _) {
 
     List.Layout = Marionette.LayoutView.extend({
+      tagName: 'div',
+      className: 'row',
       template: '#bottle-list-layout',
 
       regions: {
@@ -12,7 +14,11 @@ define(['bar', 'bootstrap', 'syphon'], function(BarManager) {
     });
 
     List.Panel = Marionette.ItemView.extend({
-      template: '#bottle-list-panel'
+      template: '#bottle-list-panel',
+
+      triggers: {
+        'click button.js-new': 'bottle:new'
+      }
     });
 
     List.Bottle = Marionette.ItemView.extend({
@@ -66,8 +72,8 @@ define(['bar', 'bootstrap', 'syphon'], function(BarManager) {
     });
 
     List.Bottles = Marionette.CompositeView.extend({
-      tagName: 'table',
-      className: 'table',
+      tagName: 'div',
+      className: 'col-xs-12 col-md-6',
       template: '#bottle-list',
       childView: List.Bottle,
       childViewContainer: 'tbody',
@@ -76,6 +82,20 @@ define(['bar', 'bootstrap', 'syphon'], function(BarManager) {
         this.$el.fadeOut(1000, function() {
           $(this).fadeIn(1000);
         });
+      },
+
+      initialize: function() {
+        this.listenTo(this.collection, 'reset', function() {
+          this.attachHtml = function(collectionView, childView, index) {
+            collectionView.$el.prepend(childView.el);
+          }
+        });
+      },
+
+      onRenderCollection: function() {
+        this.attachHtml = function(collectionView, childView, index) {
+          collectionView.$el.prepend(childView.el);
+        }
       }
     });
 

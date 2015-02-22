@@ -6,7 +6,7 @@ define(['bar'], function(BarManager) {
 
       listBottles: function() {
 
-        require(['entities/bottle', 'bottles/list/list_view', 'common/views'], function() {
+        require(['entities/bottle', 'bottles/list/list_view', 'common/views', 'bottles/new/new_view'], function() {
 
           var loadingView = new BarManager.Common.Views.Loading();
           BarManager.mainRegion.show(loadingView);
@@ -25,6 +25,31 @@ define(['bar'], function(BarManager) {
             bottlesListLayout.on('show', function() {
               bottlesListLayout.panelRegion.show(bottlesListPanel);
               bottlesListLayout.bottlesRegion.show(bottlesListView);
+            });
+
+            bottlesListPanel.on('bottle:new', function() {
+              var newBottle = new BarManager.Entities.Bottle();
+
+              var view = new BarManager.BottlesApp.New.Bottle({
+                model: newBottle
+              });
+
+              view.on('form:submit', function(data) {
+                if (newBottle.save(data)) {
+                  view.closeModal();
+                } else {
+                  view.triggerMethod('form:data:invalid', newBottle.validationError);
+                }
+              });
+
+              view.on('hidden:bs:modal', function() {
+                bottles.add(newBottle);
+                BarManager.dialogRegion.empty();
+                bottlesListView.children.findByModel(newBottle).flash('info');
+              });
+
+              BarManager.dialogRegion.show(view);
+
             });
 
             bottlesListView.on('childview:bottle:show', function(childView, model) {
