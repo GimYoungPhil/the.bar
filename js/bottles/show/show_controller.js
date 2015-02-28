@@ -8,6 +8,8 @@ define(['bar'], function(BarManager) {
 
         require(['entities/bottle', 'bottles/show/show_view', 'common/views'], function() {
 
+          BarManager.dialogRegion.empty();
+
           var loadingView = new BarManager.Common.Views.Loading();
           BarManager.mainRegion.show(loadingView);
 

@@ -3,8 +3,9 @@ define(['marionette'], function(Marionette){
   var BarManager = new Marionette.Application();
 
   BarManager.addRegions({
-    mainRegion: '#main-region',
-    dialogRegion: "#dialog-region"
+    // headerRegion: '',
+    mainRegion:   '#main-region',
+    dialogRegion: '#dialog-region'
   });
 
   BarManager.navigate = function(route, options) {
@@ -17,12 +18,12 @@ define(['marionette'], function(Marionette){
   };
 
   BarManager.on('start', function(options){
-    require(['bottles/bottle_app'], function() {
+    require(['bottles/bottle_app', 'dashboard/dashboard_app'], function() {
       if (Backbone.history) {
         Backbone.history.start();
 
         if (BarManager.getCurrentRoute() === '') {
-          BarManager.trigger('bottles:list');
+          BarManager.trigger('dashboard:list');
         }
       }
     });

@@ -23,4 +23,6 @@ define(['bar', 'spin'], function(BarManager) {
 
   });
 
+  return BarManager.Common.Views;
+
 });

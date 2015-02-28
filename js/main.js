@@ -9,7 +9,8 @@ require.config({
     syphon:      '../libs/backbone.syphon-0.4.1/backbone.syphon',
     bootstrap:   '../libs/bootstrap-3.3.2/js/bootstrap',
     spin:        '../libs/jquery.spin-1.1.6/javascripts/jquery.spin',
-    text:        '../libs/require-2.1.15/text'
+    tpl:         '../libs/underscore-1.7.0/underscore-tpl',
+    text:        '../libs/underscore-1.7.0/text'
   },
 
   shim: {
