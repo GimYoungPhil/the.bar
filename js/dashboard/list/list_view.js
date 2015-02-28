@@ -65,11 +65,20 @@ define([
 
     View.Info = Marionette.ItemView.extend({
       tagName: 'div',
-      className: 'panel panel-success',
+      className: 'panel panel-success fade',
       template: infoTpl,
 
       triggers: {
         'click a.js-edit': 'edit:bottle'
+      },
+
+      onShow: function() {
+        console.log('onShow');
+      },
+
+      onRender: function() {
+        console.log('onRender');
+        this.$el.addClass('in');
       }
     })
 
