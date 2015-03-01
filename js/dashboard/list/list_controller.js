@@ -20,13 +20,23 @@ define([
           var panel = new View.Panel();
 
           $.when(fetchingBottles).done(function(bottles) {
+            // bottle:list
             var listView = new View.List({
               collection: bottles
             });
 
             listView.on('childview:show:bottle', function(childView, args) {
+              // bottle:info
+              var bottle = args.model;
               var infoView = new View.Info({
-                model: args.model
+                model: bottle
+              });
+
+              infoView.on('edit:bottle', function() {
+                var editView = new View.New({
+                  model: bottle
+                });
+                BarManager.dialogRegion.show(editView);
               });
               layout.infoRegion.show(infoView);
             });
@@ -35,6 +45,26 @@ define([
               layout.panelRegion.show(panel);
               layout.listRegion.show(listView);
             });
+
+            // new:bottle
+            panel.on('new:bottle', function() {
+              var newBottle = new BarManager.Entities.Bottle();
+              var newView = new View.New({
+                model: newBottle
+              });
+              newView.on('post:bottle', function(data) {
+                console.log(data);
+                if (newBottle.save(data)) {
+                  newView.closeModal();
+                } else {
+                  newView.triggerMethod('form:data:invalid', newBottle.validationError);
+                }
+              });
+              newView.on('hidden:bs:modal', function() {
+                BooksTour.trigger('stores:list');
+              });
+              BarManager.dialogRegion.show(newView);
+            })
             BarManager.mainRegion.show(layout);
 
           });

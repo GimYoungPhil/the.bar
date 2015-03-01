@@ -1,10 +1,14 @@
-define(['bar', 'spin'], function(BarManager) {
+define([
+  'bar',
+  'tpl!common/templates/loading.tpl',
+  'spin'
+], function(BarManager, loadingTpl) {
 
   BarManager.module('Common.Views', function(Views, BarManager, Backbone, Marionette, $, _) {
     
     Views.Loading = Marionette.ItemView.extend({
 
-      template: '#loading-view',
+      template: loadingTpl,
       title: 'Loading Data',
       message: 'Please wait, data is loading.',
 
