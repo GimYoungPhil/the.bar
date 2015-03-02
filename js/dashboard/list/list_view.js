@@ -72,13 +72,14 @@ define([
         'click a.js-edit': 'edit:bottle'
       },
 
-      onShow: function() {
-        console.log('onShow');
-      },
+      // onShow: function() {
+      //   console.log('onShow');
+      // },
 
       onRender: function() {
-        console.log('onRender');
-        this.$el.addClass('in');
+        this.$el.fadeIn(1000);
+        // console.log('onRender');
+        // this.$el.addClass('in');
       }
     })
 
