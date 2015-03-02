@@ -1,13 +1,13 @@
 <div class="panel-heading">
-  <h3 class="panel-title">Panel title</h3>
+  <h3 class="panel-title">Bottle title</h3>
 </div>
 <table class="table">
   <thead>
     <tr>
       <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th>Title</th>
+      <th>Alcohol</th>
+      <th>Acton</th>
     </tr>
   </thead>
   <tbody>

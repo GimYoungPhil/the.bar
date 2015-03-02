@@ -1,4 +1,7 @@
-define(['bar'], function(BarManager){
+define([
+  'bar',
+  'common/dateHelper'
+], function(BarManager, dateHelper){
 
   BarManager.module('Entities', function(Entities, BarManager, Backbone, Marionette, $, _) {
 
@@ -8,7 +11,14 @@ define(['bar'], function(BarManager){
 
       defaults: {
         title: '',
-        alcohol: ''
+        imageLink: '',
+        alcohol: '0',
+        volume: '0',
+        type: '기타',
+        nationality: '한국',
+        brewingDate: dateHelper.getToday(),  // '2015-03-01',
+        state: 'close', // close, open, empty
+        memo: ''
       },
 
       validate: function(attrs, options) {
@@ -26,6 +36,12 @@ define(['bar'], function(BarManager){
         }
       }
     });
+
+/*
+http://ko.wikipedia.org/wiki/%EC%88%A0
+발효주: 탁주, 청주, 포도주, 맥주, 크바스
+증류주: 소주, 코냑, 고량주, 위스키, 보드카
+*/
 
 /*
   var BottleModel = Backbone.Model.extend({
