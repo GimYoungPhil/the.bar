@@ -74,16 +74,6 @@ define([
         'click a.js-edit': 'edit:bottle'
       },
 
-<<<<<<< HEAD
-      // onShow: function() {
-      //   console.log('onShow');
-      // },
-
-      onRender: function() {
-        this.$el.fadeIn(1000);
-        // console.log('onRender');
-        // this.$el.addClass('in');
-=======
       onShow: function() {
         this.$el.fadeIn(500);
       },
@@ -167,7 +157,6 @@ define([
 
         clearFormErrors();
         _.each(errors, markErrors);
->>>>>>> 0df7bde08b7fcbacf791ceaa3fca4e0a4179177a
       }
     });
 
