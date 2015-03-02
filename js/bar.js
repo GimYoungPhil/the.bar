@@ -3,7 +3,7 @@ define(['marionette'], function(Marionette){
   var BarManager = new Marionette.Application();
 
   BarManager.addRegions({
-    // headerRegion: '',
+    navbarRegion: '#navbar-region',
     mainRegion:   '#main-region',
     dialogRegion: '#dialog-region'
   });

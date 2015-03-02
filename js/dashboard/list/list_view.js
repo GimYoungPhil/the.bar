@@ -18,7 +18,7 @@ define([
       regions: {
         panelRegion: '#panel-region',
         listRegion:  '#list-region',
-        infoRegion: '#info-region'
+        infoRegion:  '#info-region'
       }
     });
 
