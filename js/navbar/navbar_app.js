@@ -1,27 +1,25 @@
-define([
-  'bookstour.app'
-], function(BooksTour) {
+define(['bar'], function(BarManager) {
 
-  BooksTour.module('SidebarApp', function(Sidebar, BooksTour, Backbone, Marionette, $, _) {
+  BarManager.module('NavbarApp', function(Navbar, BarManager, Backbone, Marionette, $, _) {
 
     var API = {
-      listSidebar: function() {
-        require(['sidebar/list/list_controller'], function(ListController) {
-          ListController.listSidebar();
+      listNavbar: function() {
+        require(['navbar/list/list_controller'], function(ListController) {
+          ListController.listNavbar();
         });
       }
     };
 
-    BooksTour.commands.setHandler('set:active:sidebar', function(name) {
-      BooksTour.SidebarApp.List.Controller.setActiveSidebar(name);
+    BarManager.commands.setHandler('set:active:navbar', function(name) {
+      BarManager.NavbarApp.List.Controller.setActiveNavbar(name);
     });
 
-    Sidebar.on('start', function() {
-      API.listSidebar();
+    Navbar.on('start', function() {
+      API.listNavbar();
     });
 
   });
 
-  return BooksTour.SidebarApp;
+  return BarManager.NavbarApp;
 
 });

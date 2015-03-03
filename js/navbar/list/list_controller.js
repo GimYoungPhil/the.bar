@@ -1,36 +1,36 @@
 define([
-  'bookstour.app',
-  'sidebar/list/list_view'
-], function(BooksTour, View) {
+  'bar',
+  'navbar/list/list_view'
+], function(BarManager, View) {
 
-  BooksTour.module("SidebarApp.List", function(List, BooksTour, Backbone, Marionette, $, _) {
+  BarManager.module("NavbarApp.List", function(List, BarManager, Backbone, Marionette, $, _) {
 
     List.Controller = {
 
-      listSidebar: function() {
-        require(['entities/sidebar'], function() {
-          var links = BooksTour.request('sidebar:entities');
-          var sidebars = new View.Sidebars({
+      listNavbar: function() {
+        require(['entities/navbar'], function() {
+          var links = BarManager.request('navbar:entities');
+          var navbars = new View.Navbars({
             collection: links
           });
 
-          sidebars.on('childview:navigate', function(childView, model) {
+          navbars.on('childview:navigate', function(childView, model) {
             var trigger = model.get('navigationTrigger');
-            BooksTour.trigger(trigger);
+            BarManager.trigger(trigger);
           });
 
-          BooksTour.sidebarRegion.show(sidebars);
+          BarManager.navbarRegion.show(navbars);
         });
       },
 
-      setActiveSidebar: function(sidebarUrl) {
-        require(['entities/sidebar'], function() {
-          var links = BooksTour.request('sidebar:entities');
-          links.each(function(sidebar) {
-            if (sidebar.get('url') === sidebarUrl) {
-              sidebar.set('selected', true);
+      setActiveNavbar: function(navbarUrl) {
+        require(['entities/navbar'], function() {
+          var links = BarManager.request('navbar:entities');
+          links.each(function(navbar) {
+            if (navbar.get('url') === navbarUrl) {
+              navbar.set('selected', true);
             } else {
-              sidebar.set('selected', false);
+              navbar.set('selected', false);
             }
           });
           links.trigger('reset');
@@ -41,6 +41,6 @@ define([
 
   });
 
-  return BooksTour.SidebarApp.List.Controller;
+  return BarManager.NavbarApp.List.Controller;
 
 });

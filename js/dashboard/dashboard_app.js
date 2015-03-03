@@ -12,13 +12,14 @@ define(['bar'], function(BarManager) {
       listBottles: function() {
         require(['dashboard/list/list_controller'], function(ListController) {
           ListController.listBottles();
+          BarManager.execute('set:active:navbar', 'dashboard');
         });
       }
     };
 
     BarManager.on('dashboard:list', function() {
       this.navigate('dashboard');
-      API.listBottles;
+      API.listBottles();
     });
 
     BarManager.addInitializer(function() {

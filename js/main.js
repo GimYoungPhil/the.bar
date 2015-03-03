@@ -32,7 +32,7 @@ require.config({
 });
 
 require([
-  'bar'
+  'bar', 'navbar/navbar_app'
 ], function(BarManager){
   BarManager.start();
 });

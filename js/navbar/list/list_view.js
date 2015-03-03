@@ -1,12 +1,12 @@
 define([
-  'bookstour.app',
-  'tpl!sidebar/list/templates/list.tpl',
-  'tpl!sidebar/list/templates/list_item.tpl'
-], function(BooksTour, listTpl, listItemTpl) {
+  'bar',
+  'tpl!navbar/list/templates/list.tpl',
+  'tpl!navbar/list/templates/list_item.tpl'
+], function(BarManager, listTpl, listItemTpl) {
 
-  BooksTour.module('SidebarApp.List.View', function(View, BooksTour, Backbone, Marionette, $, _) {
+  BarManager.module('NavbarApp.List.View', function(View, BarManager, Backbone, Marionette, $, _) {
 
-    View.Sidebar = Marionette.ItemView.extend({
+    View.Navbar = Marionette.ItemView.extend({
       template: listItemTpl,
       tagName: 'li',
 
@@ -26,15 +26,16 @@ define([
       }
     });
 
-    View.Sidebars = Marionette.CompositeView.extend({
+    View.Navbars = Marionette.CompositeView.extend({
+      tagName: 'div',
+      className: 'container',
       template: listTpl,
-      className: '',
-      childView: View.Sidebar,
+      childView: View.Navbar,
       childViewContainer: 'ul'
     });
 
   });
 
-  return BooksTour.SidebarApp.List.View;
+  return BarManager.NavbarApp.List.View;
 
 });

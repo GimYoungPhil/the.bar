@@ -12,6 +12,7 @@ define(['bar'], function(BarManager) {
       showAbout: function() {
         require(['about/show/show_controller'], function(ShowController) {
           ShowController.showAbout();
+          BarManager.execute('set:active:navbar', 'about');
         });
       }
     };
