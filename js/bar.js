@@ -18,7 +18,7 @@ define(['marionette'], function(Marionette){
   };
 
   BarManager.on('start', function(options){
-    require(['bottles/bottle_app', 'dashboard/dashboard_app'], function() {
+    require(['bottles/bottle_app', 'dashboard/dashboard_app', 'about/about_app'], function() {
       if (Backbone.history) {
         Backbone.history.start();
 
