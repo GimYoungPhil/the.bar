@@ -10,15 +10,15 @@ define([
       idAttribute: '_id',
 
       defaults: {
-        title: '',
-        imageLink: '',
+        title: null,
+        imageLink: null,
         alcohol: '0',
         volume: '0',
         type: '기타',
         nationality: '한국',
-        brewingDate: dateHelper.getToday(),  // '2015-03-01',
+        brewingDate: null,  // '2015-03-01',
         state: 'close', // close, open, empty
-        memo: ''
+        memo: null
       },
 
       validate: function(attrs, options) {

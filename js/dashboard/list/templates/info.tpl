@@ -21,9 +21,9 @@
     <dt>원산지</dt>
     <dd><%- nationality %></dd>
     <dt>양조일자</dt>
-    <dd><%- displayDate(brewingDate) %></dd>
+    <dd><%- displayDate(brewingDate) + ' ( ' + displayMoment(brewingDate) + ' )' %></dd>
     <dt>등록일자</dt>
-    <dd><%- displayDate(stockDate) %></dd>
+    <dd><%- displayDate(stockDate) + ' ( ' + displayMoment(stockDate) + ' )' %></dd>
     <dt>상태</dt>
     <dd><%- displayState(state) %></dd>
     <dt>메모</dt>

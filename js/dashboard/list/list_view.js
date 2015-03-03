@@ -8,7 +8,8 @@ define([
   'tpl!dashboard/list/templates/modal.tpl',
   'tpl!dashboard/list/templates/new.tpl',
   'bootstrap',
-  'syphon'
+  'syphon',
+  'moment'
 ], function(BarManager, layoutTpl, panelTpl, itemTpl, listTpl, infoTpl, modalTpl, newTpl) {
 
   BarManager.module('DashboardApp.List.View', function(View, BarManager, Backbone, Marionette, $, _) {
@@ -74,7 +75,11 @@ define([
         'click a.js-edit': 'edit:bottle'
       },
 
-      onShow: function() {
+      initialize: function() {
+        moment.locale('ko');
+      },
+
+      onRender: function() {
         this.$el.fadeIn(500);
       },
 
@@ -86,9 +91,19 @@ define([
             else if (state == 'empty') return '빈병';
             else return '모름';
           },
-          displayDate: function(time) {
-            var date = new Date(time);
-            return date.toLocaleString();
+          displayDate: function(date) {
+            if (date) {
+              return moment(date).format('L');
+            } else {
+              return '??';
+            }
+          },
+          displayMoment: function(date) {
+            if (date) {
+              return moment(date).fromNow();
+            } else {
+              return '??';
+            }
           }
         }
       }
@@ -98,7 +113,7 @@ define([
       tagName: 'div',
       className: 'modal fade',
       events: {
-        'change input[name="imageLink"]': 'loadImage',
+        'change input[name="imageLink"]': 'linkChanged',
         'click button.js-post': 'postClicked'
       },
 
@@ -107,19 +122,24 @@ define([
         bottleImg: 'img.js-image'
       },
 
-      loadImage: function(e) {
-        e.preventDefault();
-        var link = this.ui.imageLink.val();
-        this.ui.bottleImg.attr('src', link);
-      },
-
       onShow: function() {
-        // var link = this.ui.imageLink.val();
-        // this.ui.bottleImg.attr('src', link);
+        this.loadImage();
         this.$el.modal({
           backdrop: 'static',
           show: true
         });
+      },
+
+      linkChanged: function(e) {
+        e.preventDefault();
+        this.loadImage();
+      },
+
+      loadImage: function() {
+        var link = this.ui.imageLink.val();
+        if (link) {
+          this.ui.bottleImg.attr('src', link);
+        }
       },
 
       closeModal: function() {
@@ -157,6 +177,18 @@ define([
 
         clearFormErrors();
         _.each(errors, markErrors);
+      },
+
+      templateHelpers: function () {
+        return {
+          cutDisplayDate: function(date) {
+            if (date) {
+              return moment(date).format('YYYY-MM-DD');
+            } else {
+              return date;
+            }
+          }
+        }
       }
     });
 

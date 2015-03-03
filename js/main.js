@@ -9,6 +9,7 @@ require.config({
     syphon:      '../libs/backbone.syphon-0.4.1/backbone.syphon',
     bootstrap:   '../libs/bootstrap-3.3.2/js/bootstrap',
     spin:        '../libs/jquery.spin-1.1.6/javascripts/jquery.spin',
+    moment:      '../libs/moment-2.9.0/moment-with-locales',
     tpl:         '../libs/underscore-1.7.0/underscore-tpl',
     text:        '../libs/underscore-1.7.0/text'
   },

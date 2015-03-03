@@ -65,7 +65,7 @@
   <div class="form-group">
     <label class="col-xs-3 control-label" for="bottle-brewingDate">양조일자</label>
     <div class="col-xs-9">
-      <input type="date" class="form-control" id="bottle-brewingDate" name="brewingDate" value="<%- brewingDate %>">
+      <input type="date" class="form-control" id="bottle-brewingDate" name="brewingDate" value="<%- cutDisplayDate(brewingDate) %>">
     </div>
   </div>
   <div class="form-group">

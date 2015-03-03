@@ -32,6 +32,7 @@ define([
                 model: bottle
               });
 
+              // edit:bottle
               infoView.on('edit:bottle', function() {
                 var editView = new View.New({
                   model: bottle
@@ -53,7 +54,6 @@ define([
                 model: newBottle
               });
               newView.on('post:bottle', function(data) {
-                console.log(data);
                 if (newBottle.save(data)) {
                   newView.closeModal();
                 } else {
