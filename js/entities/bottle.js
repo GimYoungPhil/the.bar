@@ -65,18 +65,6 @@ http://ko.wikipedia.org/wiki/%EC%88%A0
       // comparator: 'stockDate'
     });
 
-    var initializeBottles = function() {
-      var bottles = new Entities.BottleCollection([
-        { title: '참이슬',   alcohol: '19.5%' },
-        { title: '스미노프', alcohol: '40%' },
-        { title: '카스',    alcohol: '5%'}
-      ]);
-      bottles.forEach(function(bottle) {
-        bottle.save();
-      });
-      return bottles;
-    };
-
     var API = {
       getBottleEntity: function(bottleId) {
 
@@ -105,6 +93,10 @@ http://ko.wikipedia.org/wiki/%EC%88%A0
         return defer.promise();
       }
     };
+
+    BarManager.reqres.setHandler('bottle:entity:new', function() {
+      return new Entities.Bottle();
+    })
 
     BarManager.reqres.setHandler('bottle:entity', function(id) {
       return API.getBottleEntity(id);

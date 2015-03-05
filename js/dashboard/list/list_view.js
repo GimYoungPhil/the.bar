@@ -35,6 +35,13 @@ define([
       template: itemTpl,
       triggers: {
         'click button.js-show': 'show:bottle'
+      },
+
+      flash: function(cssClass) {
+        var $view = this.$el;
+        $view.hide().toggleClass(cssClass).fadeIn(800, function() {
+          $view.toggleClass(cssClass)
+        });
       }
     });
 
@@ -73,10 +80,6 @@ define([
 
       triggers: {
         'click a.js-edit': 'edit:bottle'
-      },
-
-      initialize: function() {
-        moment.locale('ko');
       },
 
       onRender: function() {
