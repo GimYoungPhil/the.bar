@@ -1,17 +1,18 @@
-define(['bar'], function(BarManager) {
+define([
+  'bar',
+  'navbar/list/list_controller'
+], function(BarManager, ListController) {
 
   BarManager.module('NavbarApp', function(Navbar, BarManager, Backbone, Marionette, $, _) {
 
     var API = {
       listNavbar: function() {
-        require(['navbar/list/list_controller'], function(ListController) {
-          ListController.listNavbar();
-        });
+        ListController.listNavbar();
       }
     };
 
     BarManager.commands.setHandler('set:active:navbar', function(name) {
-      BarManager.NavbarApp.List.Controller.setActiveNavbar(name);
+      ListController.setActiveNavbar(name);
     });
 
     Navbar.on('start', function() {
