@@ -6,7 +6,7 @@ define([
   BarManager.module('Entities', function(Entities, BarManager, Backbone, Marionette, $, _) {
 
     Entities.Bottle = Backbone.Model.extend({
-      urlRoot: '/api/bottles',
+      urlRoot: 'http://the-bar-back.herokuapp.com/api/bottles',
       idAttribute: '_id',
 
       defaults: {
@@ -61,7 +61,7 @@ http://ko.wikipedia.org/wiki/%EC%88%A0
 */
 
     Entities.BottleCollection = Backbone.Collection.extend({
-      url: '/api/bottles',
+      url: 'http://the-bar-back.herokuapp.com/api/bottles',
       model: Entities.Bottle,
       // comparator: 'stockDate'
     });
