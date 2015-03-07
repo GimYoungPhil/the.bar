@@ -1,4 +1,3 @@
-<th scope="row">1</th>
 <td><%- title %></td>
 <td><%- alcohol %></td>
 <td>

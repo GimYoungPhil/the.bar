@@ -15,6 +15,12 @@
     </div>
   </div>
   <div class="form-group">
+    <label class="col-xs-3 control-label" for="bottle-subTitle">서브타이틀</label>
+    <div class="col-xs-9">
+      <input type="text" class="form-control" id="bottle-subTitle" name="subTitle" value="<%- subTitle %>" placeholder="">
+    </div>
+  </div>
+  <div class="form-group">
     <label class="col-xs-3 control-label" for="bottle-imageLink">이미지</label>
     <div class="col-xs-9">
       <input type="text" class="form-control" id="bottle-imageLink" name="imageLink" value="<%- imageLink %>" placeholder="http://">
@@ -45,11 +51,11 @@
         <option value="기타"  <%- type == '기타'  ? 'selected' : '' %>>기타</option>
         <option value="탁주"  <%- type == '탁주'  ? 'selected' : '' %>>탁주</option>
         <option value="청주"  <%- type == '청주'  ? 'selected' : '' %>>청주</option>
-        <option value="포도주" <%- type == '포도주' ? 'selected' : '' %>>포도주</option>
+        <option value="와인"  <%- type == '와인'  ? 'selected' : '' %>>와인</option>
         <option value="맥주"  <%- type == '맥주'  ? 'selected' : '' %>>맥주</option>
-        <option value="크바스" <%- type == '크바스' ? 'selected' : '' %>>크바스</option>
         <option value="소주"  <%- type == '소주'  ? 'selected' : '' %>>소주</option>
-        <option value="코냑"  <%- type == '코냑'  ? 'selected' : '' %>>코냑</option>
+        <option value="브랜디" <%- type == '브랜디' ? 'selected' : '' %>>브랜디</option>
+        <option value="진"    <%- type == '진'    ? 'selected' : '' %>>진</option>
         <option value="고량주" <%- type == '고량주' ? 'selected' : '' %>>고량주</option>
         <option value="위스키" <%- type == '위스키' ? 'selected' : '' %>>위스키</option>
         <option value="보드카" <%- type == '보드카' ? 'selected' : '' %>>보드카</option>

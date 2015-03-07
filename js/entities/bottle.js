@@ -11,6 +11,7 @@ define([
 
       defaults: {
         title: null,
+        subTitle: null,
         imageLink: null,
         alcohol: '0',
         volume: '0',
@@ -39,8 +40,8 @@ define([
 
 /*
 http://ko.wikipedia.org/wiki/%EC%88%A0
-발효주: 탁주, 청주, 포도주, 맥주, 크바스
-증류주: 소주, 코냑, 고량주, 위스키, 보드카
+발효주: 탁주, 청주, 와인, 맥주, [크바스]
+증류주: 소주, 브랜디(코냑), 진, 고량주, 위스키, 보드카, [리큐어, 럼, 데킬라]
 */
 
 /*

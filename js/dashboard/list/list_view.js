@@ -4,13 +4,14 @@ define([
   'tpl!dashboard/list/templates/panel.tpl',
   'tpl!dashboard/list/templates/item.tpl',
   'tpl!dashboard/list/templates/list.tpl',
+  'tpl!dashboard/list/templates/empty.tpl',
   'tpl!dashboard/list/templates/info.tpl',
   'tpl!dashboard/list/templates/modal.tpl',
   'tpl!dashboard/list/templates/new.tpl',
+  'moment',
   'bootstrap',
-  'syphon',
-  'moment'
-], function(BarManager, layoutTpl, panelTpl, itemTpl, listTpl, infoTpl, modalTpl, newTpl) {
+  'syphon'
+], function(BarManager, layoutTpl, panelTpl, itemTpl, listTpl, emptyTpl, infoTpl, modalTpl, newTpl, moment) {
 
   BarManager.module('DashboardApp.List.View', function(View, BarManager, Backbone, Marionette, $, _) {
 
@@ -35,14 +36,12 @@ define([
       template: itemTpl,
       triggers: {
         'click button.js-show': 'show:bottle'
-      },
-
-      flash: function(cssClass) {
-        var $view = this.$el;
-        $view.hide().toggleClass(cssClass).fadeIn(800, function() {
-          $view.toggleClass(cssClass)
-        });
       }
+    });
+
+    View.Empty = Marionette.ItemView.extend({
+      tagName: 'td',
+      template: emptyTpl,
     });
 
     View.List = Marionette.CompositeView.extend({
@@ -51,26 +50,7 @@ define([
       template: listTpl,
       childView: View.Item,
       childViewContainer: 'tbody',
-
-      // onChildviewBottleDelete: function() {
-      //   this.$el.fadeOut(1000, function() {
-      //     $(this).fadeIn(1000);
-      //   });
-      // },
-
-      // initialize: function() {
-      //   this.listenTo(this.collection, 'reset', function() {
-      //     this.attachHtml = function(collectionView, childView, index) {
-      //       collectionView.$el.prepend(childView.el);
-      //     }
-      //   });
-      // },
-
-      // onRenderCollection: function() {
-      //   this.attachHtml = function(collectionView, childView, index) {
-      //     collectionView.$el.prepend(childView.el);
-      //   }
-      // }
+      emptyView: View.Empty
     });
 
     View.Info = Marionette.ItemView.extend({

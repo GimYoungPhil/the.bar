@@ -5,13 +5,13 @@
     </a>
   </h3>
 </div>
-<div  class="panel-image">
   <img class="img-responsive js-image" src="<%- imageLink %>">
-</div>
 <div class="panel-body">
   <dl class="dl-horizontal">
     <dt>주류명</dt>
     <dd><%- title %></dd>
+    <dt>서브타이틀</dt>
+    <dd><%- subTitle %></dd>
     <dt>알콜분</dt>
     <dd><%- alcohol %> %</dd>
     <dt>용량</dt>

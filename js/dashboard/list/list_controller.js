@@ -10,7 +10,7 @@ define([
 
       listBottles: function() {
 
-        require(['entities/bottle', 'common/views'], function() {
+        require(['entities/bottle'], function() {
 
           var loadingView = new CommonViews.Loading();
           BarManager.mainRegion.show(loadingView);
@@ -63,25 +63,19 @@ define([
                 model: newBottle
               });
               newView.on('post:bottle', function(data) {
-                // console.log(newBottle);
-                // console.log(data);
-                // newBottle.save(data, {
-                //   success: function(model, response, options) {
-                //     console.log(model);
-                //     console.log(response);
-                //     console.log(options);
-                //   },
-                //   error: function(model, response, options) {
-                //   }
-                // });
                 var savingBottle = newBottle.save(data);
                 if (savingBottle) {
                   $.when(savingBottle).done(function(model, response) {
-                    console.log(model);
-                    console.log(response);
+                    newView.closeModal();
+                    newBottle.set(model);
+                    bottles.add(newBottle);
+                    var newBottleView = listView.children.findByModel(newBottle);
+                    if (newBottleView) {
+                      newBottleView.flash("success");
+                    }
                   }).fail(function() {
 
-                  })
+                  });
                 }
                 // if (bottleSaved) {
                 //   newView.closeModal();
