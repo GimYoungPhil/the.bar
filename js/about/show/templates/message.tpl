@@ -22,4 +22,4 @@
   <footer>셰익스피어</footer>
 </blockquote>
 
-<img src="/img/beer.png" class="img-responsive" alt="Responsive image">
+<img src="./img/beer.png" class="img-responsive" alt="Responsive image">
