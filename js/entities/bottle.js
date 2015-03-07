@@ -8,6 +8,10 @@ define([
     Entities.Bottle = Backbone.Model.extend({
       urlRoot: 'http://the-bar-back.herokuapp.com/api/bottles',
       idAttribute: '_id',
+      sync : function(method, collection, options) {
+        options.dataType = "jsonp";
+        return Backbone.sync(method, collection, options);
+      },
 
       defaults: {
         title: null,
@@ -63,7 +67,10 @@ http://ko.wikipedia.org/wiki/%EC%88%A0
     Entities.BottleCollection = Backbone.Collection.extend({
       url: 'http://the-bar-back.herokuapp.com/api/bottles',
       model: Entities.Bottle,
-      // comparator: 'stockDate'
+      sync : function(method, collection, options) {
+        options.dataType = "jsonp";
+        return Backbone.sync(method, collection, options);
+      }
     });
 
     var API = {

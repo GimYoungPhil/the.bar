@@ -29,7 +29,7 @@ define(['marionette'], function(Marionette){
         Backbone.history.start();
 
         if (BarManager.getCurrentRoute() === '') {
-          BarManager.trigger('bottle:list');
+          BarManager.trigger('bottles:list');
         }
       }
     });
